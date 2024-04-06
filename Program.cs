@@ -22,7 +22,8 @@ public static class Program
         Console.WriteLine($"Loaded midi '{args[0]}'");
         
         Track track = Track.Build(midiFile);
-        track.RemoveBlanks(10);
+        track.RemoveBlanks(30);
+        track.SeperateRepeatNotes();
 
         CompressedTrack compressedTrack = CompressedTrack.Build(track);
         compressedTrack.GenerateHeaderCode("out/track_codegen.h");
